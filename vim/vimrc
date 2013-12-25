@@ -1,0 +1,93 @@
+"""""""""""""""""""""""""""""""""""""""
+" VIM dotfile
+" Dylan Sarber
+"
+" Relies on plugins:
+"   * pathogen
+"   * vim-airline
+"   * ctrlp
+"   * nerdtree
+"   * tagbar
+"""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""
+" Infect before everything else!
+"""""""""""""""""""""""""""""""""""""""
+execute pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""
+" Common Settings
+"""""""""""""""""""""""""""""""""""""""
+
+" Default to 4 for spacing, although 2 is my preferred in most places...
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+
+" Goodies for working with source code
+set incsearch
+set ignorecase
+set smartcase
+set number
+syntax on
+
+" To keep us sane when two tabs are side-by-side
+set textwidth=79
+
+" For plugins
+set laststatus=2
+
+" These are just to ensure compatability
+set encoding=utf-8
+set t_Co=256
+
+"set background=light
+colorscheme monokai
+
+"""""""""""""""""""""""""""""""""""""""
+" Mappings
+"""""""""""""""""""""""""""""""""""""""
+
+" Jump down/up while keeping line position
+nmap j gj
+nmap k gk
+
+" Make some shortcuts for quicker buffer switching
+nmap - :bp<CR>
+nmap = :bn<CR>
+
+"""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""
+
+" Filetype
+""""""""""
+filetype plugin indent on
+
+au filetype c setl shiftwidth=2
+au filetype c setl tabstop=2
+au filetype cpp setl shiftwidth=2
+au filetype cpp setl tabstop=2
+
+au filetype lua setl shiftwidth=2
+au filetype lua setl tabstop=2
+
+" CTRL-P
+""""""""
+set wildignore+=*/generated_docs/*
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/]\.(git|hg|svn)$',
+  \ }
+
+" VIM Airline
+"""""""""""""
+let g:airline_theme = 'luna'
+
+" Enable airline's "tab" line at the top
+let g:airline#extensions#tabline#enabled = 1
+
+" Tagbar
+""""""""
+
+

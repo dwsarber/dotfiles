@@ -1,0 +1,27 @@
+[user]
+	name = dwsarber
+	email = dylan.sarber@gmail.com
+[core]
+	editor = vim
+	autocrlf = input
+	excludesfile = /Users/dwsarber/.gitignore_global
+[color]
+	branch = always
+	diff = always
+	status = always
+[alias]
+	cdiff = diff --cached
+	ci = commit
+	st = status
+	d = diff
+	di = diff --cached
+	a = add
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
