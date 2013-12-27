@@ -74,7 +74,7 @@ au filetype lua setl tabstop=2
 
 " CTRL-P
 """"""""
-set wildignore+=*/generated_docs/*
+set wildignore+=*venv*,*/generated_docs/*
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/]\.(git|hg|svn)$',
   \ }
