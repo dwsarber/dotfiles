@@ -41,8 +41,8 @@ set laststatus=2
 set encoding=utf-8
 set t_Co=256
 
-"set background=light
-colorscheme monokai
+set background=light
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
