@@ -34,6 +34,10 @@ syntax on
 " To keep us sane when two tabs are side-by-side
 set textwidth=79
 
+" I'm not a fan of the window-opening defaults, open below and right
+set splitbelow
+set splitright
+
 " For plugins
 set laststatus=2
 
@@ -41,8 +45,8 @@ set laststatus=2
 set encoding=utf-8
 set t_Co=256
 
-set background=light
-colorscheme solarized
+"set background=light
+colorscheme zenburn
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -77,6 +81,7 @@ au filetype lua setl tabstop=2
 set wildignore+=*venv*,*/generated_docs/*
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(pyc)$',
   \ }
 
 " VIM Airline
@@ -88,5 +93,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Tagbar
 """"""""
-
+" Auto-start Tagbar for all filetypes
+au VimEnter * Tagbar
 
