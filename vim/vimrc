@@ -44,9 +44,10 @@ set laststatus=2
 " These are just to ensure compatability
 set encoding=utf-8
 set t_Co=256
+set bs=2
 
 "set background=light
-colorscheme zenburn
+colorscheme monokai
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
