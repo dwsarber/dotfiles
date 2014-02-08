@@ -47,7 +47,8 @@ set t_Co=256
 set bs=2
 
 "set background=light
-colorscheme monokai
+colorscheme lucius
+LuciusDark
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
