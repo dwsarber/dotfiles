@@ -46,9 +46,7 @@ set encoding=utf-8
 set t_Co=256
 set bs=2
 
-"set background=light
-colorscheme lucius
-LuciusDark
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings

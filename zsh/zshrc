@@ -27,7 +27,7 @@ if [[ -d $HOME/.oh-my-zsh ]]; then
     # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
     # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
     # Example format: plugins=(rails git textmate ruby lighthouse)
-    plugins=(sublime git ruby brew battery cp gem github golang node npm osx python rvm svn mercurial vagrant)
+    plugins=(git ruby brew battery cp gem github node npm osx python rvm)
 
     source $ZSH/oh-my-zsh.sh
 fi
