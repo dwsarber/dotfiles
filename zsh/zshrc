@@ -60,9 +60,6 @@ alias mkdir="mkdir -p"
 # Gives much better diff output with SVN similar to Git/HG
 alias svndiff="svn diff | colordiff | less -R"
 
-# Logs vim commands for study later
-alias vim='vim -w ~/.vimlog "$@"'
-
 #------------
 # Go-lang dev
 #------------
