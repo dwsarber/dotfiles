@@ -46,7 +46,7 @@ set encoding=utf-8
 set t_Co=256
 set bs=2
 
-colorscheme solarized
+colorscheme monokai
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -75,6 +75,9 @@ au filetype cpp setl tabstop=2
 
 au filetype lua setl shiftwidth=2
 au filetype lua setl tabstop=2
+
+au filetype ruby setl shiftwidth=2
+au filetype ruby setl tabstop=2
 
 " CTRL-P
 """"""""
