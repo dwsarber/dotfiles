@@ -49,7 +49,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/npm/bin:~/bin:$PATH
 export CLICOLOR=1
 
 # iTerm2 has very poor default ls colors... use these
-export LSCOLORS=exfxcxdxbxegedabagacad
+export LSCOLORS=Exfxcxdxbxegedabagacad
 
 #--------
 # Aliases
