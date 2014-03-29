@@ -69,7 +69,8 @@ export PATH=$HOME/gocode/bin:$PATH
 #-----------
 # Python dev
 #-----------
-export PATH=/usr/local/share/python:$PATH
+#export PATH=/usr/local/share/python:$PATH
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 #-----------
 # NodeJS dev
