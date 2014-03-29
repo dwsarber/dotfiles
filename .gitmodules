@@ -34,3 +34,9 @@
 [submodule "vim/bundle/vim-colorschemes"]
 	path = vim/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "vim/bundle/vim-torquescript"]
+	path = vim/bundle/vim-torquescript
+	url = https://github.com/eightyeight/vim-torquescript.git
+[submodule "vim/bundle/dracula-theme"]
+	path = vim/bundle/dracula-theme
+	url = git@github.com:zenorocha/dracula-theme.git
