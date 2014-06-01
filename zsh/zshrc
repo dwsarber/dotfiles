@@ -15,8 +15,7 @@
 if [[ -d $HOME/.oh-my-zsh ]]; then
     ZSH=$HOME/.oh-my-zsh
 
-    # My personal theme, modified from "fox"
-    ZSH_THEME="tick"
+    ZSH_THEME="Soliah"
 
     # I pretty much always stay up to date when prompted, make sure this is on
     DISABLE_AUTO_UPDATE="false"
@@ -63,8 +62,8 @@ alias svndiff="svn diff | colordiff | less -R"
 #------------
 # Go-lang dev
 #------------
-export GOPATH=$HOME/gocode
-export PATH=$HOME/gocode/bin:$PATH
+export GOPATH=$HOME/Projects/Go
+export PATH=$HOME/Projects/Go/bin:$PATH
 
 #-----------
 # Python dev
@@ -75,7 +74,12 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #-----------
 # NodeJS dev
 #-----------
-NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
+export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
+
+#-----------
+# Haskell dev
+#-----------
+export PATH=$HOME/.cabal/bin:$PATH
 
 #----------------
 # Heroku settings
