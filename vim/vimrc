@@ -46,7 +46,8 @@ set encoding=utf-8
 set t_Co=256
 set bs=2
 
-colorscheme monokai
+"set background=light
+colorscheme asmdev
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
