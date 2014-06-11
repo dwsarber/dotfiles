@@ -1,1 +1,22 @@
-set guifont=Andale\ Mono:h14
+"""""""""""""""""""""""""""""""""""""""
+" GVIM dotfile
+" Dylan Sarber
+"
+" Relies on plugins:
+"   * pathogen
+"   * vim-airline
+"   * ctrlp
+"   * tagbar
+"""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""
+" Common Settings
+"""""""""""""""""""""""""""""""""""""""
+set guifont=CamingoCode\ Regular:h18
+set background=dark
+colorscheme asmdev
+
+" VIM Airline
+"""""""""""""
+let g:airline_theme = 'solarized'
+

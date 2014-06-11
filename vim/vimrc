@@ -100,3 +100,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Auto-start Tagbar for all filetypes
 au VimEnter * Tagbar
 
+" NERDTree
+""""""""
+"au VimEnter * NERDTree
+
