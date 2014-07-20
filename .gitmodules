@@ -46,3 +46,9 @@
 [submodule "vim/bundle/vim-jade"]
 	path = vim/bundle/vim-jade
 	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "vim/bundle/vim-bbye"]
+	path = vim/bundle/vim-bbye
+	url = https://github.com/moll/vim-bbye.git
+[submodule "vim/bundle/SpellCheck"]
+	path = vim/bundle/SpellCheck
+	url = https://github.com/vim-scripts/SpellCheck

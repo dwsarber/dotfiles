@@ -43,7 +43,12 @@ bindkey -r '^S'
 # Common Exports
 #---------------
 export EDITOR=vim
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/npm/bin:~/bin:$PATH
+
+# Add personal bin applications to path
+export PATH=$HOME/bin:$PATH
+
+# Supports Homebrew binary lookup
+export PATH=/usr/local/bin:$PATH
 
 export CLICOLOR=1
 
@@ -55,26 +60,29 @@ export LSCOLORS=ExfxcxdxDxegedabagacad
 #--------
 alias ls="ls -Gh"
 alias mkdir="mkdir -p"
+alias df="df -h"
 
 # Gives much better diff output with SVN similar to Git/HG
 alias svndiff="svn diff | colordiff | less -R"
 
-#------------
-# Go-lang dev
-#------------
-export GOPATH=$HOME/Projects/Go
-export PATH=$HOME/Projects/Go/bin:$PATH
-
 #-----------
 # Python dev
 #-----------
-#export PATH=/usr/local/share/python:$PATH
+
+# Python shims
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+#-----------
+# Golang dev
+#-----------
+export GOPATH=$HOME/Projects/Go
+export PATH=$GOPATH/bin:$PATH
 
 #-----------
 # NodeJS dev
 #-----------
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
+export PATH=/usr/local/share/npm/bin:$PATH
 
 #-----------
 # Haskell dev

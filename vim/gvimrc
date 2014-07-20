@@ -12,11 +12,7 @@
 """""""""""""""""""""""""""""""""""""""
 " Common Settings
 """""""""""""""""""""""""""""""""""""""
-set guifont=CamingoCode\ Regular:h18
-set background=dark
-colorscheme asmdev
-
-" VIM Airline
-"""""""""""""
-let g:airline_theme = 'solarized'
+set guifont=CamingoCode\ Regular:h14
+"set background=light
+colorscheme birds_of_paradise
 

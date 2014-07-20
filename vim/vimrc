@@ -53,6 +53,9 @@ colorscheme asmdev
 " Mappings
 """""""""""""""""""""""""""""""""""""""
 
+" Change leader to something easier to reach...
+let mapleader = ";"
+
 " Jump down/up while keeping line position
 nmap j gj
 nmap k gk
@@ -60,6 +63,9 @@ nmap k gk
 " Make some shortcuts for quicker buffer switching
 nmap - :bp<CR>
 nmap = :bn<CR>
+
+" Shortcut for Bdelete script command
+nnoremap <Leader>q :Bdelete<CR>
 
 """""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -80,6 +86,9 @@ au filetype lua setl tabstop=2
 au filetype ruby setl shiftwidth=2
 au filetype ruby setl tabstop=2
 
+au filetype html setl shiftwidth=2
+au filetype html setl tabstop=2
+
 " CTRL-P
 """"""""
 set wildignore+=*venv*,*/generated_docs/*
@@ -98,7 +107,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Tagbar
 """"""""
 " Auto-start Tagbar for all filetypes
-au VimEnter * Tagbar
+"au VimEnter * Tagbar
 
 " NERDTree
 """"""""
