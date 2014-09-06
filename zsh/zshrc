@@ -19,7 +19,7 @@ if [[ -d $HOME/.oh-my-zsh ]]; then
 
     # I pretty much always stay up to date when prompted, make sure this is on
     DISABLE_AUTO_UPDATE="false"
-    export UPDATE_ZSH_DAYS=7
+    export UPDATE_ZSH_DAYS=1
 
     COMPLETION_WAITING_DOTS="true"
 
@@ -69,8 +69,11 @@ alias svndiff="svn diff | colordiff | less -R"
 # Python dev
 #-----------
 
-# Python shims
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# Virtualenvwrapper
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+#export WORKON_HOME=$HOME/.virtualenvs
+#export PROJECT_HOME=$HOME/Projects
+#source /usr/local/bin/virtualenvwrapper.sh
 
 #-----------
 # Golang dev
