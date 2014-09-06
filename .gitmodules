@@ -52,3 +52,6 @@
 [submodule "vim/bundle/SpellCheck"]
 	path = vim/bundle/SpellCheck
 	url = https://github.com/vim-scripts/SpellCheck
+[submodule "vim/bundle/vim-go"]
+	path = vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
