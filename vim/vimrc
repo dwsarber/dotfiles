@@ -46,8 +46,8 @@ set encoding=utf-8
 set t_Co=256
 set bs=2
 
-"set background=light
-colorscheme asmdev
+set background=dark
+colorscheme lucius
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
