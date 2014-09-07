@@ -12,7 +12,6 @@
 """""""""""""""""""""""""""""""""""""""
 " Common Settings
 """""""""""""""""""""""""""""""""""""""
-set guifont=CamingoCode\ Regular:h14
-"set background=light
-colorscheme birds_of_paradise
+set guifont=Source\ Code\ Pro\ Light:h18
+set linespace=4
 
