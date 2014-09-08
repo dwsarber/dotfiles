@@ -89,13 +89,9 @@ au filetype ruby setl tabstop=2
 au filetype html setl shiftwidth=2
 au filetype html setl tabstop=2
 
-" CTRL-P
-""""""""
-set wildignore+=*venv*,*/generated_docs/*
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(pyc)$',
-  \ }
+" Unite
+"""""""
+nnoremap <C-p> :Unite file_rec/async<cr>
 
 " VIM Airline
 """""""""""""
