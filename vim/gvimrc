@@ -12,6 +12,10 @@
 """""""""""""""""""""""""""""""""""""""
 " Common Settings
 """""""""""""""""""""""""""""""""""""""
-set guifont=Source\ Code\ Pro\ Light:h18
+set guifont=Inconsolata-g:h14
 set linespace=4
+
+" Colors
+""""""""
+colorscheme ChocolateLiquor
 

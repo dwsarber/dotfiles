@@ -47,7 +47,7 @@ set t_Co=256
 set bs=2
 
 set background=dark
-colorscheme lucius
+colorscheme gentooish
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -96,6 +96,8 @@ nnoremap <C-p> :Unite file_rec/async<cr>
 " VIM Airline
 """""""""""""
 let g:airline_theme = 'luna'
+let g:airline_left_sep='»'
+let g:airline_right_sep='«'
 
 " Enable airline's "tab" line at the top
 let g:airline#extensions#tabline#enabled = 1

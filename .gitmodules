@@ -1,66 +1,39 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
-[submodule "vim/bundle/Vim-Jinja2-Syntax"]
-	path = vim/bundle/Vim-Jinja2-Syntax
-	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
-[submodule "vim/bundle/html5.vim"]
-	path = vim/bundle/html5.vim
-	url = https://github.com/othree/html5.vim.git
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "vim/bundle/VimClojure"]
-	path = vim/bundle/VimClojure
-	url = https://github.com/vim-scripts/VimClojure.git
-[submodule "vim/bundle/vim-solarized"]
-	path = vim/bundle/vim-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vim-haskell"]
-	path = vim/bundle/vim-haskell
-	url = https://github.com/vim-scripts/haskell.vim.git
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "vim/bundle/jedi-vim"]
-	path = vim/bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "vim/bundle/vim-colorschemes"]
 	path = vim/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "vim/bundle/vim-torquescript"]
-	path = vim/bundle/vim-torquescript
-	url = https://github.com/eightyeight/vim-torquescript.git
-[submodule "vim/bundle/dracula-theme"]
-	path = vim/bundle/dracula-theme
-	url = git@github.com:zenorocha/dracula-theme.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/vim-jade"]
-	path = vim/bundle/vim-jade
-	url = git://github.com/digitaltoad/vim-jade.git
 [submodule "vim/bundle/vim-bbye"]
 	path = vim/bundle/vim-bbye
 	url = https://github.com/moll/vim-bbye.git
-[submodule "vim/bundle/SpellCheck"]
-	path = vim/bundle/SpellCheck
-	url = https://github.com/vim-scripts/SpellCheck
 [submodule "vim/bundle/vim-go"]
 	path = vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
 [submodule "vim/bundle/vim-easy-align"]
 	path = vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "vim/bundle/neocomplete-vim"]
-	path = vim/bundle/neocomplete-vim
-	url = https://github.com/Shougo/neocomplete.vim.git
 [submodule "vim/bundle/vim-unite"]
 	path = vim/bundle/vim-unite
 	url = https://github.com/Shougo/unite.vim.git
 [submodule "vim/bundle/vim-proc"]
 	path = vim/bundle/vim-proc
 	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "vim/bundle/vim-numbertoggle"]
+	path = vim/bundle/vim-numbertoggle
+	url = https://github.com/jeffkreeftmeijer/vim-numbertoggle.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
