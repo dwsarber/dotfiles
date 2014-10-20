@@ -58,7 +58,14 @@ export LSCOLORS=ExfxcxdxDxegedabagacad
 #--------
 # Aliases
 #--------
-alias ls="ls -Gh"
+OS=$(uname -s)
+
+if [ $OS -eq "Darwin" ]; then
+    alias ls="ls -Gh"
+else
+    alias ls="ls -h --color=auto"
+fi
+
 alias mkdir="mkdir -p"
 alias df="df -h"
 
