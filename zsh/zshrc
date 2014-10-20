@@ -53,7 +53,9 @@ export PATH=/usr/local/bin:$PATH
 export CLICOLOR=1
 
 # iTerm2 has very poor default ls colors... use these
-export LSCOLORS=ExfxcxdxDxegedabagacad
+if [ $OS -eq "Darwin" ]; then
+    export LSCOLORS=ExfxcxdxDxegedabagacad
+fi
 
 #--------
 # Aliases
