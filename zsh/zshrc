@@ -63,6 +63,7 @@ OS=$(uname -s)
 if [ $OS -eq "Darwin" ]; then
     alias ls="ls -Gh"
 else
+    alias free="free -h"
     alias ls="ls -h --color=auto"
 fi
 
