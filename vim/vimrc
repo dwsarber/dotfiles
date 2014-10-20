@@ -67,6 +67,9 @@ nmap = :bn<CR>
 " Shortcut for Bdelete script command
 nnoremap <Leader>q :Bdelete<CR>
 
+" Shortcut to EasyAlign variable assignments
+vnoremap <Leader>a :EasyAlign<CR>*=<CR>
+
 """""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""
@@ -91,7 +94,8 @@ au filetype html setl tabstop=2
 
 " Unite
 """""""
-nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <C-p> :Unite -no-split -start-insert file_rec/async<cr>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " VIM Airline
 """""""""""""
@@ -110,4 +114,8 @@ let g:airline#extensions#tabline#enabled = 1
 " NERDTree
 """"""""
 "au VimEnter * NERDTree
+
+" Syntastic
+"""""""""""
+let g:syntastic_javascript_checkers = ['jshint']
 

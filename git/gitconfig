@@ -10,19 +10,15 @@
 	diff = always
 	status = always
 [alias]
+    br = branch
 	cdiff = diff --cached
 	ci = commit
 	st = status
 	d = diff
-	di = diff --cached
 	a = add
     pa = add -p
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    new-bug = "!f() { git branch bug-$1; git checkout bug-$1; }; f"
+    new-feature = "!f() { git branch feature-$1; git checkout feature-$1; }; f"
 [push]
 	default = simple
