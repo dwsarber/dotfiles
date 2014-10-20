@@ -7,6 +7,8 @@
 #
 #------------------------------------------------------------------------------
 
+OS=$(uname -s)
+
 #----------
 # oh-my-zsh
 #----------
@@ -53,7 +55,7 @@ export PATH=/usr/local/bin:$PATH
 export CLICOLOR=1
 
 # iTerm2 has very poor default ls colors... use these
-if [ $OS -eq "Darwin" ]; then
+if [[ $OS == "Darwin" ]]; then
     export LSCOLORS=ExfxcxdxDxegedabagacad
 fi
 
@@ -62,7 +64,7 @@ fi
 #--------
 OS=$(uname -s)
 
-if [ $OS -eq "Darwin" ]; then
+if [[ $OS == "Darwin" ]]; then
     alias ls="ls -Gh"
 else
     alias free="free -h"
