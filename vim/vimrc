@@ -114,3 +114,7 @@ let g:airline#extensions#tabline#enabled = 1
 """""""""""
 let g:syntastic_javascript_checkers = ['jshint']
 
+" EasyAlign
+"""""""""""
+vnoremap <C-a> :EasyAlign =<cr>
+
