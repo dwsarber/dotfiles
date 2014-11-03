@@ -1,12 +1,7 @@
 """""""""""""""""""""""""""""""""""""""
 " VIM dotfile
-" Dylan Sarber
-"
-" Relies on plugins:
-"   * pathogen
-"   * vim-airline
-"   * ctrlp
-"   * tagbar
+" 
+" Author: Dylan Sarber
 """""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""
