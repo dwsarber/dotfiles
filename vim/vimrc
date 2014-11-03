@@ -107,12 +107,11 @@ let g:ctrlp_map = '<c-p>'
 
 " Tagbar
 """"""""
-" Auto-start Tagbar for all filetypes
-"au VimEnter * Tagbar
+au VimEnter * Tagbar
 
 " NERDTree
 """"""""
-"au VimEnter * NERDTree
+au VimEnter * NERDTree
 
 " Syntastic
 """""""""""
