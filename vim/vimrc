@@ -101,6 +101,10 @@ let g:airline_right_sep='«'
 " Enable airline's "tab" line at the top
 let g:airline#extensions#tabline#enabled = 1
 
+" Ctrl-P
+""""""""
+let g:ctrlp_map = '<c-p>'
+
 " Tagbar
 """"""""
 " Auto-start Tagbar for all filetypes
