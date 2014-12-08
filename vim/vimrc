@@ -108,6 +108,9 @@ au VimEnter * Tagbar
 """"""""
 au VimEnter * NERDTree
 
+" Automatically close NERDTree when it's the last window open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Syntastic
 """""""""""
 let g:syntastic_javascript_checkers = ['jshint']
@@ -119,6 +122,6 @@ vnoremap <C-a> :EasyAlign =<cr>
 """""""""""""""""""""""""""""""""""""""
 " Misc.
 """""""""""""""""""""""""""""""""""""""
-" Start in the center window (since NERDTree is set to open automatically
+" Start in the center window (since NERDTree is set to open automatically)
 au VimEnter * wincmd l
 
