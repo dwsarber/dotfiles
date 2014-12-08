@@ -1,68 +1,75 @@
-#------------------------------------------------------------------------------
+# /////////////////////////////////////////////////////////////////////////////
 # .zshrc
 #
 # Author: Dylan Sarber
 #
 # My personal ZSH configurations. Feel free to steal/use/modify!
-#
-#------------------------------------------------------------------------------
+# /////////////////////////////////////////////////////////////////////////////
 
+# Useful variables
 OS=$(uname -s)
 
-#----------
-# oh-my-zsh
-#----------
+# Utility functions
+function program_exists () {
+    return command -v $1 >/dev/null 2>&1
+}
 
-# Some of my machine's don't have oh-my-zsh, so ignore when not available
-if [[ -d $HOME/.oh-my-zsh ]]; then
-    ZSH=$HOME/.oh-my-zsh
+# Antigen
+# -------------------------------------
 
-    ZSH_THEME="Soliah"
+if [[ -d $HOME/code/dotfiles ]]; then
+    source $HOME/code/dotfiles/zsh/antigen/antigen.zsh clone/antigen.zsh
 
-    # I pretty much always stay up to date when prompted, make sure this is on
-    DISABLE_AUTO_UPDATE="false"
-    export UPDATE_ZSH_DAYS=1
+    antigen use oh-my-zsh
 
-    COMPLETION_WAITING_DOTS="true"
+    # Bundles
+    antigen bundle brew
+    antigen bundle git
+    antigen bundle github
+    antigen bundle golang
+    antigen bundle node
+    antigen bundle npm
+    antigen bundle osx
+    antigen bundle python
+    antigen bundle zsh-users/zsh-syntax-highlighting
 
-    # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-    # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-    # Example format: plugins=(rails git textmate ruby lighthouse)
-    plugins=(git ruby brew battery cp gem github node npm osx python rvm golang)
+    antigen theme Soliah
 
-    source $ZSH/oh-my-zsh.sh
+    antigen apply
 fi
 
-#--------------------------
-# Further ZSH configuration
-#--------------------------
+# General Configuration
+# -------------------------------------
 
 # Free up ctrl-s
 setopt noflowcontrol
 bindkey -r '^S'
 
-#---------------
-# Common Exports
-#---------------
+export CLICOLOR=1
 export EDITOR=vim
 
 # Add personal bin applications to path
-export PATH=$HOME/bin:$PATH
+HOME_BIN=$HOME/bin
 
-# Supports Homebrew binary lookup
-export PATH=/usr/local/bin:$PATH
+# I pretty much always make this folder in my home
+# TODO - this should be last, so I can overwrite anything with my home folder
+if [[ ! -d $HOME_BIN ]]; then
+    mkdir -p $HOME_BIN
+fi
+export PATH=$HOME_BIN:$PATH
 
-export CLICOLOR=1
+# Supports Homebrew binary lookups
+if [[ -x /usr/local/bin/brew ]]; then
+    export PATH=/usr/local/bin:$PATH
+fi
 
 # iTerm2 has very poor default ls colors... use these
-if [[ $OS == "Darwin" ]]; then
+if [[ $OS = "Darwin" ]]; then
     export LSCOLORS=ExfxcxdxDxegedabagacad
 fi
 
-#--------
 # Aliases
-#--------
-OS=$(uname -s)
+# -------------------------------------
 
 if [[ $OS == "Darwin" ]]; then
     alias ls="ls -Gh"
@@ -71,26 +78,26 @@ else
     alias ls="ls -h --color=auto"
 fi
 
-alias mkdir="mkdir -p"
 alias df="df -h"
+alias mkdir="mkdir -p"
 
 # Gives much better diff output with SVN similar to Git/HG
 alias svndiff="svn diff | colordiff | less -R"
 
-#-----------
-# Python dev
-#-----------
 
-# Virtualenvwrapper
-#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/Projects
-#source /usr/local/bin/virtualenvwrapper.sh
+# Development
+# -------------------------------------
+
+PROJECT_DIR=$HOME/code
+
+if [[ ! -d $PROJECT_DIR ]]; then
+    mkdir $PROJECT_DIR
+fi
 
 #-----------
 # Golang dev
 #-----------
-export GOPATH=$HOME/Projects/Go
+export GOPATH=$PROJECT_DIR/golang
 export PATH=$GOPATH/bin:$PATH
 
 #-----------
@@ -99,24 +106,10 @@ export PATH=$GOPATH/bin:$PATH
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=/usr/local/share/npm/bin:$PATH
 
-#-----------
-# Haskell dev
-#-----------
-export PATH=$HOME/.cabal/bin:$PATH
-
 #----------------
 # Heroku settings
 #----------------
 export PATH="/usr/local/heroku/bin:$PATH"
-
-#------------------
-# Local Boot2Docker
-#------------------
-if [[ $OS == "Darwin" ]]; then
-    export DOCKER_HOST=tcp://192.168.59.103:2376
-    export DOCKER_CERT_PATH=/Users/dwsarber/.boot2docker/certs/boot2docker-vm
-    export DOCKER_TLS_VERIFY=1
-fi
 
 #------------------
 # RVM Bootstrapping
