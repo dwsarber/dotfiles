@@ -23,6 +23,7 @@ if [[ -d $HOME/code/dotfiles ]]; then
     antigen use oh-my-zsh
 
     # Bundles
+    antigen bundle autoenv
     antigen bundle brew
     antigen bundle git
     antigen bundle github
