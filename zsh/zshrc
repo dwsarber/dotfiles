@@ -104,7 +104,6 @@ export PATH=$GOPATH/bin:$PATH
 #-----------
 # NodeJS dev
 #-----------
-export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 export PATH=/usr/local/share/npm/bin:$PATH
 
 #----------------
