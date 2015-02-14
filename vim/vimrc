@@ -20,6 +20,7 @@ set expandtab
 set smartindent
 
 " Goodies for working with source code
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -41,8 +42,16 @@ set encoding=utf-8
 set t_Co=256
 set bs=2
 
-set background=dark
-colorscheme gentooish
+"set background=dark
+colorscheme apprentice
+
+" VIM swap files cause a lot of trouble inside directories
+" They can go in a hidden dir in my home
+set backupdir=$HOME/.vim-backup
+set directory=$HOME/.vim-swaps
+
+" Misc.
+set showcmd
 
 """""""""""""""""""""""""""""""""""""""
 " Mappings
@@ -100,28 +109,7 @@ let g:airline#extensions#tabline#enabled = 1
 """"""""
 let g:ctrlp_map = '<c-p>'
 
-" Tagbar
-""""""""
-au VimEnter * Tagbar
-
-" NERDTree
-""""""""
-au VimEnter * NERDTree
-
-" Automatically close NERDTree when it's the last window open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Syntastic
-"""""""""""
-let g:syntastic_javascript_checkers = ['jshint']
-
 " EasyAlign
 """""""""""
 vnoremap <C-a> :EasyAlign =<cr>
-
-"""""""""""""""""""""""""""""""""""""""
-" Misc.
-"""""""""""""""""""""""""""""""""""""""
-" Start in the center window (since NERDTree is set to open automatically)
-au VimEnter * wincmd l
 
