@@ -32,6 +32,7 @@ if [[ -d $HOME/code/dotfiles ]]; then
     antigen bundle npm
     antigen bundle osx
     antigen bundle python
+    antigen bundle rvm
     antigen bundle zsh-users/zsh-syntax-highlighting
 
     antigen theme Soliah
@@ -110,4 +111,9 @@ export PATH=/usr/local/share/npm/bin:$PATH
 # Heroku settings
 #----------------
 export PATH="/usr/local/heroku/bin:$PATH"
+
+#---------
+# Ruby dev
+#---------
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

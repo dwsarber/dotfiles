@@ -18,6 +18,8 @@
 	a = add
     pa = add -p
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    d-last = diff HEAD~
+    unstage = reset HEAD
     new-bug = "!f() { git branch bug-$1; git checkout bug-$1; }; f"
     new-feature = "!f() { git branch feature-$1; git checkout feature-$1; }; f"
 [push]
