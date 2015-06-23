@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+#
+# Install a few fundamental applications and kick off the installation process
+# for the programs, languages, and other terminal goodies based on my personal
+# dotfiles.
+#
+# It's worth noting that this is NOT a general shell package manager in any way.
+# You should like ZSH before using this for your own purposes. However, please
+# do steal the organization principles and add your own modifications. These
+# dotfiles are meant to be simple, readable, and modular.
+#
+# Basic packages necessities include (installed by this script):
+#   * Git
+#   * ZSH
+#   * Homebrew (only on OSX)
+#
+# Supported operating systems and Linux distributions:
+#   * OSX
+#
+
+# The basic packages needed by my other modules.
+PKGS=(git zsh)
+
+# Utility logging function to call out lines emitted by my install script (vs.
+# other scripts run from a 3rd-party).
+log() {
+  printf "\033[36mDOTFILES:\033[39m $1\n"
+}
+
+# Set a few variables for package installation through the current OS or
+# distribution's package manager.
+set_package_manager() {
+  # OSX
+  if [[ -x $(command -v brew) ]]; then
+    PKG_MANAGER=brew
+    PKG_INSTALL_COMMAND=install
+    PKG_INSTALL_FLAGS=
+  fi
+}
+
+# Install Homebrew using their standard install script. All prompts are strictly
+# from the Homebrew installation script until expressly indicating that dotfile
+# installation will continue.
+install_homebrew() {
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+# Install fundamental dependencies used across various modules in my dotfiles.
+install_dependencies() {
+  log "Installing basic dependencies for use by later module installations..."
+
+  for pkg in ${PKGS[@]}; do
+    if [[ ! -x $(command -v prog) ]]; then
+      log "Installing $pkg"
+      $PKG_MANAGER $PKG_INSTALL_COMMAND $PKG_INSTALL_FLAGS $pkg
+    fi
+  done
+}
+
+# Displays a prompt to let the user select which modules to install. Most of the
+# time, I'll just be saying "all", but for certain environments a specific set
+# of modules is desired.
+prompt_for_module_install() {
+  # TODO: Actually list modules available
+  log "Available modules include:"
+  read -p "Enter a space-separated list of modules [all]: " modules
+
+  # Default to "all" modules.
+  if [[ -z $modules ]]; then
+    modules="all"
+  fi
+
+  # TODO: Actually install the modules provided
+  log "$modules"
+}
+
+# Install all the things!
+install() {
+  if [ -d ~/.dotfiles ]; then
+    log "Directory ~/.dotfiles already exists. Move it elsewhere then run this script again."
+    exit 1
+  fi
+
+  # Install Homebrew first on OSX first since we lack a default package manager
+  # there.
+  if [[ ! -x $(command -v brew) && $(uname -s) == "Darwin" ]]; then
+    log "Installing Homebrew before doing anything else"
+    install_homebrew
+    log "Continuing installation of dotfiles..."
+  fi
+
+  # At this point, we should have a package manager setup, so discover it and
+  # set a few variables for installing packages.
+  set_package_manager
+
+  install_dependencies
+
+  # Clone the rest of my dotfiles and prompt for modules to be installed.
+  # Other modules can later be installed manually by running the respective
+  # `install` script in that module's directory.
+  # TODO: Actually clone files
+  #git clone https://github.com/dwsarber/dotfiles.git ~/.dotfiles
+
+  prompt_for_module_install
+}
+
+install
