@@ -25,7 +25,7 @@ DOTFILES_ZSH_MODULES="${DOTFILES}/zsh/modules"
 # Directories that are known to NOT be modules and should be exluded from the
 # installation prompt. ZSH will be installed by default, so it's not an option.
 MODULES=()
-NON_MODULES=("install" ".git" "zsh")
+NON_MODULES=("install" ".git")
 INSTALL_MODULES=()
 
 # The basic packages needed by my other modules.
