@@ -19,13 +19,22 @@
 #   * OSX
 #
 
+DOTFILES="${HOME}/.dotfiles"
+DOTFILES_ZSH_MODULES="${DOTFILES}/zsh/modules"
+
+# Directories that are known to NOT be modules and should be exluded from the
+# installation prompt. ZSH will be installed by default, so it's not an option.
+MODULES=()
+NON_MODULES=("install" ".git" "zsh")
+INSTALL_MODULES=()
+
 # The basic packages needed by my other modules.
 PKGS=(git zsh)
 
 # Utility logging function to call out lines emitted by my install script (vs.
 # other scripts run from a 3rd-party).
-log() {
-  printf "\033[36mDOTFILES:\033[39m $1\n"
+log_msg() {
+  printf "\033[36mDOTFILES:\033[39m ${1}\n"
 }
 
 # Set a few variables for package installation through the current OS or
@@ -48,49 +57,98 @@ install_homebrew() {
 
 # Install fundamental dependencies used across various modules in my dotfiles.
 install_dependencies() {
-  log "Installing basic dependencies for use by later module installations..."
+  log_msg "Installing basic dependencies for use by later module installations..."
 
   for pkg in ${PKGS[@]}; do
+    # TODO: detection doesn't seem to be working? Is -x the problem?
     if [[ ! -x $(command -v prog) ]]; then
-      log "Installing $pkg"
-      $PKG_MANAGER $PKG_INSTALL_COMMAND $PKG_INSTALL_FLAGS $pkg
+      log_msg "Installing ${pkg}"
+      ${PKG_MANAGER} ${PKG_INSTALL_COMMAND} ${PKG_INSTALL_FLAGS} ${pkg}
     fi
   done
 }
 
+# Find all installable modules.
+find_modules() {
+  local find_flags=()
+
+  # Make sure to ignore folders we know aren't used for modules.
+  for n in ${NON_MODULES[@]}; do
+    find_flags=(-not -iname ${n} ${find_flags[@]})
+  done
+
+  # Additionally, we only care about directories. If a module configure script
+  # bleeds into the top-level of the dotfiles... something needs to be
+  # rearranged. No modules should have spaces, quotes, etc... this lookup is
+  # quite dumb.
+  MODULES=($(find ${DOTFILES} -depth 1 -type d "${find_flags[@]}" -exec basename {} +))
+}
+
 # Displays a prompt to let the user select which modules to install. Most of the
-# time, I'll just be saying "all", but for certain environments a specific set
+# time I will just be saying "all", but for certain environments a specific set
 # of modules is desired.
 prompt_for_module_install() {
-  # TODO: Actually list modules available
-  log "Available modules include:"
-  read -p "Enter a space-separated list of modules [all]: " modules
+  # Load the array of available modules first.
+  find_modules
 
-  # Default to "all" modules.
-  if [[ -z $modules ]]; then
-    modules="all"
+  echo "Modules will now be installed for all the things"
+  echo "Available modules include: ${MODULES[@]}"
+  read -p "Enter a space-separated list of modules [all]: " selected_modules
+
+  # Default to "all" modules. Really, truly only looks for strings with no
+  # spaces or anything, so don't mash the spacebar before-hand.
+  if [[ -z ${selected_modules} ]]; then
+    selected_modules=("all")
   fi
 
-  # TODO: Actually install the modules provided
-  log "$modules"
+  INSTALL_MODULES=(${selected_modules[@]})
+}
+
+# Make the directory for linking shell modules.
+make_module_dir() {
+  # Create modules directory when it doesn't exist
+  if [[ ! -d ${DOTFILES_ZSH_MODULES} ]]; then
+    log_msg "Create ZSH modules folder at ${DOTFILES_ZSH_MODULES}"
+
+    mkdir -p ${DOTFILES_ZSH_MODULES}
+  fi
+}
+
+# Install all provided modules using a configure script.
+install_modules() {
+  # If "all" is the only module present, make $INSTALL_MODULES match $MODULES.
+  if [[ "${INSTALL_MODULES[0]}" == "all" ]]; then
+    INSTALL_MODULES=(${MODULES[@]})
+  fi
+
+  echo ${INSTALL_MODULES[@]}
+
+  # All modules are expected to have a configure script available. It should do
+  # any necessary setup, such as linking files where needed, when run. The
+  # script should handle both an "install" and "uninstall" command.
+  for module in ${INSTALL_MODULES[@]}; do
+    if [[ -f "${DOTFILES}/${module}/configure" ]]; then
+      source "${DOTFILES}/${module}/configure" install
+    fi
+  done
 }
 
 # Install all the things!
 install() {
-  if [ -d ~/.dotfiles ]; then
-    log "Directory ~/.dotfiles already exists. Move it elsewhere then run this script again."
+  if [[ -d ${DOTFILES} ]]; then
+    log_msg "Directory ~/.dotfiles already exists. Move it elsewhere then run this script again."
     exit 1
   fi
 
   # Install Homebrew first on OSX first since we lack a default package manager
   # there.
   if [[ ! -x $(command -v brew) && $(uname -s) == "Darwin" ]]; then
-    log "Installing Homebrew before doing anything else"
+    log_msg "Installing Homebrew before doing anything else"
     install_homebrew
-    log "Continuing installation of dotfiles..."
+    log_msg "Continuing installation of dotfiles..."
   fi
 
-  # At this point, we should have a package manager setup, so discover it and
+  # At this point, we should have a package manager set up, so discover it and
   # set a few variables for installing packages.
   set_package_manager
 
@@ -99,10 +157,24 @@ install() {
   # Clone the rest of my dotfiles and prompt for modules to be installed.
   # Other modules can later be installed manually by running the respective
   # `install` script in that module's directory.
-  # TODO: Actually clone files
-  #git clone https://github.com/dwsarber/dotfiles.git ~/.dotfiles
+  git clone https://github.com/dwsarber/dotfiles.git ${DOTFILES}
+
+  # Clone any git submodules
+  cd ${DOTFILES}
+  git submodule init
+  git submodule update
 
   prompt_for_module_install
+
+  make_module_dir
+  install_modules
+
+  # Change shell of the currently logged in user to ZSH.
+  if [[ ! ${SHELL} == "/bin/zsh" ]]; then
+    sudo chsh -s /bin/zsh ${USER}
+  fi
+
+  log_msg "Finished installing. Load a new shell to experience the goodies."
 }
 
 install
