@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------------
+# Configure tmux files.
+# ------------------------------------------------------------------------------
+
+mod_tmux_install() {
+  if [[ ! -h ${HOME}/.tmux.conf ]]; then
+    ln -s ${CURRENT_MODULE}/tmux.conf ${HOME}/.tmux.conf
+  fi
+}
+
+mod_tmux_uninstall() {
+  if [[ -h ${HOME}/.tmux.conf ]]; then
+    rm ${HOME}/.tmux.conf
+  fi
+}
+
+case "${1}" in
+  install)
+    mod_tmux_install
+    ;;
+  uninstall)
+    mod_tmux_uninstall
+    ;;
+  *)
+    echo "Usage: ${0} {install|uninstall}"
+esac
