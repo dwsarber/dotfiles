@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""""""""""""
 " VIM dotfile
-" 
+"
 " Author: Dylan Sarber
 """""""""""""""""""""""""""""""""""""""
 
@@ -42,13 +42,7 @@ set encoding=utf-8
 set t_Co=256
 set bs=2
 
-"set background=dark
-colorscheme sweater
-
-" VIM swap files cause a lot of trouble inside directories
-" They can go in a hidden dir in my home
-set backupdir=$HOME/.vim-backup
-set directory=$HOME/.vim-swaps
+colorscheme elflord
 
 " Misc.
 set showcmd
@@ -107,21 +101,3 @@ au filetype html setl tabstop=2
 au filetype go setl noexpandtab
 au filetype go setl shiftwidth=4
 au filetype go setl tabstop=4
-
-" VIM Airline
-"""""""""""""
-let g:airline_theme = 'luna'
-let g:airline_left_sep='⟩'
-let g:airline_right_sep='⟨'
-
-" Enable airline's "tab" line at the top
-let g:airline#extensions#tabline#enabled = 1
-
-" Ctrl-P
-""""""""
-let g:ctrlp_map = '<c-p>'
-
-" EasyAlign
-"""""""""""
-vnoremap <C-a> :EasyAlign =<cr>
-
