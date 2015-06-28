@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------------
+# Configure Heroku tooling.
+# ------------------------------------------------------------------------------
+
+mod_heroku_install() {
+  if [[ ! -h ${DOTFILES_ZSH_MODULES}/heroku.zsh ]]; then
+    ln -s ${CURRENT_MODULE}/tool.zsh ${DOTFILES_ZSH_MODULES}/heroku.zsh
+  fi
+}
+
+mod_heroku_uninstall() {
+  if [[ -h ${DOTFILES_ZSH_MODULES}/heroku.zsh ]]; then
+    rm ${DOTFILES_ZSH_MODULES}/heroku.zsh
+  fi
+}
+
+case "${1}" in
+  install)
+    mod_heroku_install
+    ;;
+  uninstall)
+    mod_heroku_uninstall
+    ;;
+  *)
+    echo "Usage: ${0} {install|uninstall}"
+esac
