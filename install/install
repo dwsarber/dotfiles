@@ -128,6 +128,10 @@ install_modules() {
   # script should handle both an "install" and "uninstall" command.
   for module in ${INSTALL_MODULES[@]}; do
     if [[ -f "${DOTFILES}/${module}/configure" ]]; then
+      # The $CURRENT_MODULE variable should always point to the module directory
+      # for use by scripts.
+      CURRENT_MODULE="${DOTFILES}/${module}"
+      
       source "${DOTFILES}/${module}/configure" install
     fi
   done
