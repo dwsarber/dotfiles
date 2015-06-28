@@ -4,11 +4,11 @@
 
 mod_git_install() {
   if [[ ! -h ${HOME}/.gitconfig ]]; then
-    ln -s ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
+    ln -s ${CURRENT_MODULE}/gitconfig ${HOME}/.gitconfig
   fi
 
   if [[ ! -h {$HOME}/.gitignore_global ]]; then
-    ln -s ${DOTFILES}/git/gitignore_global ${HOME}/.gitignore_global
+    ln -s ${CURRENT_MODULE}/gitignore_global ${HOME}/.gitignore_global
   fi
 }
 
