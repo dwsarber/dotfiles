@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------------
+# Configure Node tooling.
+# ------------------------------------------------------------------------------
+
+mod_node_install() {
+  if [[ ! -h ${DOTFILES_ZSH_MODULES}/node.zsh ]]; then
+    ln -s ${CURRENT_MODULE}/lang.zsh ${DOTFILES_ZSH_MODULES}/node.zsh
+  fi
+}
+
+mod_node_uninstall() {
+  if [[ -h ${DOTFILES_ZSH_MODULES}/node.zsh ]]; then
+    rm ${DOTFILES_ZSH_MODULES}/node.zsh
+  fi
+}
+
+case "${1}" in
+  install)
+    mod_node_install
+    ;;
+  uninstall)
+    mod_node_uninstall
+    ;;
+  *)
+    echo "Usage: ${0} {install|uninstall}"
+esac
