@@ -121,7 +121,7 @@ install_modules() {
     INSTALL_MODULES=(${MODULES[@]})
   fi
 
-  echo ${INSTALL_MODULES[@]}
+  log_msg "Installing the following modules: ${INSTALL_MODULES[@]}"
 
   # All modules are expected to have a configure script available. It should do
   # any necessary setup, such as linking files where needed, when run. The
@@ -131,7 +131,7 @@ install_modules() {
       # The $CURRENT_MODULE variable should always point to the module directory
       # for use by scripts.
       CURRENT_MODULE="${DOTFILES}/${module}"
-      
+
       source "${DOTFILES}/${module}/configure" install
     fi
   done
