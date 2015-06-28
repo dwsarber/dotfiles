@@ -4,7 +4,7 @@
 
 mod_zsh_install() {
   if [[ ! -h ${HOME}/.zshrc ]]; then
-    ln -s ${DOTFILES}/zsh/zshrc.zsh ${HOME}/.zshrc
+    ln -s ${CURRENT_MODULE}/zshrc.zsh ${HOME}/.zshrc
   fi
 }
 
