@@ -13,5 +13,8 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-completions src
 
+  # Theme: https://github.com/caiogondim/bullet-train-oh-my-zsh-theme
+  zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
   zgen save
 fi
