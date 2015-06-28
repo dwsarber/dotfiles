@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+# Configure common git files.
+# ------------------------------------------------------------------------------
+
+mod_git_install() {
+  if [[ ! -h ${HOME}/.gitconfig ]]; then
+    ln -s ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
+  fi
+
+  if [[ ! -h {$HOME}/.gitignore_global ]]; then
+    ln -s ${DOTFILES}/git/gitignore_global ${HOME}/.gitignore_global
+  fi
+}
+
+mod_git_uninstall() {
+  if [[ -h ${HOME}/.gitconfig ]]; then
+    rm ${HOME}/.gitconfig
+  fi
+
+  if [[ -h {$HOME}/.gitignore_global ]]; then
+    rm ${HOME}/.gitignore_global
+  fi
+}
+
+case "${1}" in
+  install)
+    mod_git_install
+    ;;
+  uninstall)
+    mod_git_uninstall
+    ;;
+  *)
+    echo "Usage: ${0} {install|uninstall}"
+esac
