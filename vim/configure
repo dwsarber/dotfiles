@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+# Configure VIM tooling.
+# ------------------------------------------------------------------------------
+
+mod_vim_install() {
+  if [[ ! -h ${HOME}/.vimrc ]]; then
+    ln -s ${CURRENT_MODULE}/vimrc ${HOME}/.vimrc
+  fi
+
+  if [[ ! -h ${HOME}/.vim ]]; then
+    ln -s ${CURRENT_MODULE} ${HOME}/.vim
+  fi
+}
+
+mod_vim_uninstall() {
+  if [[ -h ${HOME}/.vimrc ]]; then
+    rm ${HOME}/.vimrc
+  fi
+
+  if [[ -h ${HOME}/.vim ]]; then
+    rm ${HOME}/.vim
+  fi
+}
+
+case "${1}" in
+  install)
+    mod_vim_install
+    ;;
+  uninstall)
+    mod_vim_uninstall
+    ;;
+  *)
+    echo "Usage: ${0} {install|uninstall}"
+esac
