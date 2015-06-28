@@ -1,0 +1,25 @@
+# ------------------------------------------------------------------------------
+# Extra modifications for general user-friendliness when working from the shell.
+#
+# Most of the things in here are personal idioms I've adopted and try to keep
+# consistent across my various boxes. None of it is configurable for the moment
+# because I don't have much of a need to change them with new machines.
+# ------------------------------------------------------------------------------
+
+# Set up a user-scoped, binary directory. Any executables added or linked to
+# this directory will be available through the my $PATH.
+HOME_BIN="${HOME}/bin"
+
+if [[ ! -d ${HOME_BIN} ]]; then
+    mkdir -p ${HOME_BIN}
+fi
+
+export PATH="${HOME_BIN}:${PATH}"
+
+# Additionally, I put all projects, mine or otherwise, in a particular
+# directory.
+PROJECT_DIR="${HOME}/code"
+
+if [[ ! -d ${PROJECT_DIR} ]]; then
+    mkdir -p ${PROJECT_DIR}
+fi

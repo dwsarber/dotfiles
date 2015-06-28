@@ -1,0 +1,17 @@
+# ------------------------------------------------------------------------------
+# Set up and configuration of the zgen plugin manager.
+# https://github.com/tarjoilija/zgen
+# ------------------------------------------------------------------------------
+
+# Set up zgen
+source "${DOTFILES_ZSH}/zgen/zgen.zsh"
+
+# Save a zgen "init.zsh" file when one doesn't exist
+if ! zgen saved; then
+  echo "Saving zgen configuration"
+
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load zsh-users/zsh-completions src
+
+  zgen save
+fi

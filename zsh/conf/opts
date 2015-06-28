@@ -1,0 +1,10 @@
+# ------------------------------------------------------------------------------
+# ZSH-specific options and general exports related to shell usage.
+# ------------------------------------------------------------------------------
+
+# Free up ctrl-s
+setopt noflowcontrol
+bindkey -r '^S'
+
+# <3 VIM
+export EDITOR=vim

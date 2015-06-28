@@ -1,0 +1,12 @@
+# ------------------------------------------------------------------------------
+# Options and exports for terminal handling
+# ------------------------------------------------------------------------------
+
+# Turn on listing colors just to rub it in even though my aliases use their
+# specific flags for colors.
+export CLICOLOR=1
+
+# iTerm2 has very poor default `ls` colors... use these instead
+if [[ $(uname -s) == "Darwin" ]]; then
+  export LSCOLORS=ExfxcxdxDxegedabagacad
+fi

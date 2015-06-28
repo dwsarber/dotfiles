@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------------
+# Configuration ZSH files.
+# ------------------------------------------------------------------------------
+
+mod_zsh_install() {
+  if [[ ! -h ${HOME}/.zshrc ]]; then
+    ln -s ${DOTFILES}/zsh/zshrc.zsh ${HOME}/.zshrc
+  fi
+}
+
+mod_zsh_uninstall() {
+  if [[ -h ${HOME}/.zshrc ]]; then
+    rm ${HOME}/.zshrc
+  fi
+}
+
+case "${1}" in
+  install)
+    mod_zsh_install
+    ;;
+  uninstall)
+    mod_zsh_uninstall
+    ;;
+  *)
+    echo "Usage: ${0} {install|uninstall}"
+esac

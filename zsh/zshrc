@@ -1,119 +1,27 @@
-# /////////////////////////////////////////////////////////////////////////////
-# .zshrc
-#
-# Author: Dylan Sarber
-#
+# ------------------------------------------------------------------------------
 # My personal ZSH configurations. Feel free to steal/use/modify!
-# /////////////////////////////////////////////////////////////////////////////
+#
+# This file is the entry point for all ZSH-related dotfiles of mine.
+# ------------------------------------------------------------------------------
 
-# Useful variables
-OS=$(uname -s)
+DOTFILES="${HOME}/.dotfiles"
+DOTFILES_ZSH="${DOTFILES}/zsh"
+DOTFILES_ZSH_CONF="${DOTFILES_ZSH}/conf"
+DOTFILES_ZSH_MODULES="${DOTFILES_ZSH}/modules"
 
-# Utility functions
-function program_exists () {
-    return command -v $1 >/dev/null 2>&1
-}
+# Source my ZSH configuration files spread across various files
+source "${DOTFILES_ZSH_CONF}/zgen"
+source "${DOTFILES_ZSH_CONF}/opts"
+source "${DOTFILES_ZSH_CONF}/aliases"
+source "${DOTFILES_ZSH_CONF}/term"
 
-# Antigen
-# -------------------------------------
+# Modules are linked via later setup. This directory is ignored and purely for
+# loading my shell needs for development with particular languages, etc. Only
+# single shell scripts should be linked in this directory.
+for module in ${DOTFILES_ZSH_MODULES}/*; do
+  source "${module}"
+done
 
-if [[ -d $HOME/code/dotfiles ]]; then
-    source $HOME/code/dotfiles/zsh/antigen/antigen.zsh clone/antigen.zsh
-
-    antigen use oh-my-zsh
-
-    # Bundles
-    antigen bundle autoenv
-    antigen bundle brew
-    antigen bundle git
-    antigen bundle github
-    antigen bundle golang
-    antigen bundle node
-    antigen bundle npm
-    antigen bundle osx
-    antigen bundle python
-    antigen bundle rvm
-    antigen bundle zsh-users/zsh-syntax-highlighting
-
-    antigen theme Soliah
-
-    antigen apply
-fi
-
-# General Configuration
-# -------------------------------------
-
-# Free up ctrl-s
-setopt noflowcontrol
-bindkey -r '^S'
-
-export CLICOLOR=1
-export EDITOR=vim
-
-# Add personal bin applications to path
-HOME_BIN=$HOME/bin
-
-# I pretty much always make this folder in my home
-# TODO - this should be last, so I can overwrite anything with my home folder
-if [[ ! -d $HOME_BIN ]]; then
-    mkdir -p $HOME_BIN
-fi
-export PATH=$HOME_BIN:$PATH
-
-# Supports Homebrew binary lookups
-if [[ -x /usr/local/bin/brew ]]; then
-    export PATH=/usr/local/bin:$PATH
-fi
-
-# iTerm2 has very poor default ls colors... use these
-if [[ $OS = "Darwin" ]]; then
-    export LSCOLORS=ExfxcxdxDxegedabagacad
-fi
-
-# Aliases
-# -------------------------------------
-
-if [[ $OS == "Darwin" ]]; then
-    alias ls="ls -Gh"
-else
-    alias free="free -h"
-    alias ls="ls -h --color=auto"
-fi
-
-alias df="df -h"
-alias mkdir="mkdir -p"
-
-# Gives much better diff output with SVN similar to Git/HG
-alias svndiff="svn diff | colordiff | less -R"
-
-
-# Development
-# -------------------------------------
-
-PROJECT_DIR=$HOME/code
-
-if [[ ! -d $PROJECT_DIR ]]; then
-    mkdir $PROJECT_DIR
-fi
-
-#-----------
-# Golang dev
-#-----------
-export GOPATH=$PROJECT_DIR/golang
-export PATH=$GOPATH/bin:$PATH
-
-#-----------
-# NodeJS dev
-#-----------
-export PATH=/usr/local/share/npm/bin:$PATH
-
-#----------------
-# Heroku settings
-#----------------
-export PATH="/usr/local/heroku/bin:$PATH"
-
-#---------
-# Ruby dev
-#---------
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
+# Source any miscellaneous setup last. I tend to do last-ditch $PATH
+# modifications here, so it should come after any other changes to $PATH.
+source "${DOTFILES_ZSH_CONF}/user"

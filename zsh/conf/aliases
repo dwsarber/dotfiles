@@ -1,0 +1,12 @@
+# ------------------------------------------------------------------------------
+# Aliases for flags and other things providing nicer defaults.
+# ------------------------------------------------------------------------------
+
+if [[ $(uname -s) == "Darwin" ]]; then
+    alias ls="ls -Gh"
+else
+    alias free="free -h"
+    alias ls="ls -h --color=auto"
+fi
+
+alias df="df -h"
