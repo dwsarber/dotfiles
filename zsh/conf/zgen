@@ -10,6 +10,9 @@ source "${DOTFILES_ZSH}/zgen/zgen.zsh"
 if ! zgen saved; then
   echo "Saving zgen configuration"
 
+  zgen oh-my-zsh
+
+  zgen oh-my-zsh plugins/git
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-completions src
 
