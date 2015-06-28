@@ -6,5 +6,8 @@
 setopt noflowcontrol
 bindkey -r '^S'
 
+# For fancy prompts
+setopt promptsubst
+
 # <3 VIM
 export EDITOR=vim
