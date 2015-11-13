@@ -45,6 +45,10 @@ set_package_manager() {
     PKG_MANAGER=brew
     PKG_INSTALL_COMMAND=install
     PKG_INSTALL_FLAGS=
+  elif [[ -x $(command -v apt-get) ]]; then
+    PKG_MANAGER=apt-get
+    PKG_INSTALL_COMMAND=install
+    PKG_INSTALL_FLAGS=-y
   fi
 }
 
